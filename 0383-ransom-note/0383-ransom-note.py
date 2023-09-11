@@ -1,12 +1,15 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        from collections import Counter 
         
-        ransomNote = sorted(ransomNote)
-        magazine = sorted(magazine)
+        magazine_dict = dict(Counter(magazine))
         
-        while ransomNote:
-            if ransomNote[0] in magazine:
-                magazine.remove(ransomNote.pop(0))
+        for key in ransomNote:
+            
+            if magazine_dict.get(key):
+                magazine_dict[key] -= 1
+                if magazine_dict[key] == 0:
+                    del magazine_dict[key]
             else:
                 return False
             
