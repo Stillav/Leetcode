@@ -1,8 +1,8 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        s_dict = {key: s.count(key) for key in s}
-        t_dict = {key: t.count(key) for key in t}
+        sorted_s = sorted(s)
+        sorted_t = sorted(t)
         
-        return s_dict.items() == t_dict.items()
+        return sorted_s == sorted_t
         
         
