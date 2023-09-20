@@ -1,16 +1,7 @@
+from collections import Counter
+
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
-        num_dict = dict()
-        result_dict = dict() 
-        for num in arr:
-            if num_dict.get(num):
-                num_dict[num] += 1
-            else:
-                num_dict[num] = 1 
-                
-        for key, value in num_dict.items():
-            if result_dict.get(value):
-                return False 
-            result_dict[value] = key 
+        v_list = [v for v in Counter(arr).values()]
         
-        return True
+        return len(v_list) == len(set(v_list))
